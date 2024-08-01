@@ -4,6 +4,7 @@
 - Tailwind CSS / SCSS
 - Effector
 - Effector Forms
+- Effector Storage
 - React Calendar
 
 ## Как запустить:
