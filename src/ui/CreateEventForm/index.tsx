@@ -27,8 +27,7 @@ export const CreateEventForm: React.FC = () => {
     !fields.type.value ||
     (fields.type.value === EEventType.Chores && !fields.note.value) ||
     (fields.type.value === EEventType.DayEvent &&
-      !fields.address.value &&
-      !fields.time.value) ||
+      (!fields.address.value || !fields.time.value)) ||
     (fields.type.value === EEventType.Holiday && !fields.budget.value);
 
   return (
@@ -41,7 +40,7 @@ export const CreateEventForm: React.FC = () => {
         <input
           value={fields.eventName.value}
           onChange={(event) => fields.eventName.onChange(event.target.value)}
-          className="input"
+          className="create-input"
           data-with-error={Boolean(errorText("eventName"))}
         />
         {errorText("eventName") && (
@@ -50,15 +49,18 @@ export const CreateEventForm: React.FC = () => {
       </div>
       <div>
         <p>Тип мероприятия:</p>
-        <EventTypeDrodown />
+        <EventTypeDrodown
+          fieldToChange={createEventModel.createEventForm.fields.type}
+        />
       </div>
       {fields.type.value && fields.type.value === EEventType.Holiday && (
         <div className="mb-2">
           <p>Бюджет?</p>
           <input
+            type="number"
             onChange={(event) => fields.budget.onChange(event.target.value)}
             data-with-error={Boolean(errorText("budget"))}
-            className="input"
+            className="create-input"
           />
           {errorText("budget") && (
             <p className="text-red-400 text-xs">{errorText("budget")}</p>
@@ -73,7 +75,7 @@ export const CreateEventForm: React.FC = () => {
             <input
               onChange={(event) => fields.address.onChange(event.target.value)}
               data-with-error={Boolean(errorText("address"))}
-              className="input"
+              className="create-input"
             />
             {errorText("address") && (
               <p className="text-red-400 text-xs">{errorText("address")}</p>
@@ -82,9 +84,10 @@ export const CreateEventForm: React.FC = () => {
           <div>
             <p>Во сколько?</p>
             <input
+              type="number"
               onChange={(event) => fields.time.onChange(event.target.value)}
               data-with-error={Boolean(errorText("time"))}
-              className="input"
+              className="create-input"
             />
             {errorText("time") && (
               <p className="text-red-400 text-xs">{errorText("time")}</p>
@@ -99,7 +102,7 @@ export const CreateEventForm: React.FC = () => {
           <input
             onChange={(event) => fields.note.onChange(event.target.value)}
             data-with-error={Boolean(errorText("note"))}
-            className="input"
+            className="create-input"
           />
           {errorText("note") && (
             <p className="text-red-400 text-xs">{errorText("note")}</p>

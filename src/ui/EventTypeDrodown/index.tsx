@@ -1,14 +1,13 @@
 import { useField } from "effector-forms";
 import React, { useState } from "react";
-import { createEventModel } from "../../model";
-import { EEventType } from "../../types";
+import { EEventType, IEventTypeDropdown } from "../../types";
 import "./styles.scss";
 
-export const EventTypeDrodown: React.FC = () => {
+export const EventTypeDrodown: React.FC<IEventTypeDropdown> = ({
+  fieldToChange,
+}) => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-  const { value, onChange } = useField(
-    createEventModel.createEventForm.fields.type
-  );
+  const { value, onChange } = useField(fieldToChange);
 
   const handleHeaderClick = () => {
     setIsOpenDropdown((prev) => !prev);

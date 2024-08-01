@@ -1,3 +1,6 @@
+import { StoreWritable } from "effector";
+import { Field } from "effector-forms";
+
 export enum EEventType {
   Holiday = "HOLIDAY",
   DayEvent = "DAY_EVENT",
@@ -13,4 +16,12 @@ export type TEvent = {
   address?: string;
   note?: string;
   eventType: EEventType;
+};
+
+export interface IEventTypeDropdown {
+  fieldToChange: Field<EEventType>;
+}
+export type TPersistConfigItem = {
+  $store: StoreWritable<unknown>;
+  key: string;
 };

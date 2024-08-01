@@ -7,6 +7,15 @@ import {
   ChangeEventForm,
 } from "../ui";
 
+import { listModel } from "../model";
+import { persist } from "effector-storage/local";
+
+persist({
+  key: "events-list",
+  source: listModel.$events,
+  target: listModel.$events,
+});
+
 export const App: React.FC = () => {
   return (
     <div className="mainWrapper">

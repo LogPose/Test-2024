@@ -1,9 +1,10 @@
-.input {
+.create-input {
     @apply outline-none;
     @apply border;
     @apply rounded-lg;
     @apply p-1;
     @apply transition;
+    @apply w-full;
 
     &[data-with-error="true"] {
         @apply bg-red-300

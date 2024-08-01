@@ -2,6 +2,9 @@ import { createForm } from "effector-forms";
 import { EEventType, TEvent } from "../types";
 import { createEvent, restore, sample } from "effector";
 import { listModel } from "./listModel";
+import { createGate } from "effector-react";
+
+const createEventFormGate = createGate();
 
 const createEventForm = createForm({
   fields: {
@@ -25,11 +28,6 @@ const createEventForm = createForm({
         {
           name: "required",
           validator: (value, { type }) => {
-            console.log(
-              type,
-              value,
-              type === EEventType.Holiday && Boolean(value)
-            );
             return type === EEventType.Holiday && Boolean(value);
           },
           errorText: "Обозначьте бюджет мероприятия",
@@ -112,9 +110,16 @@ sample({
   target: listModel.$events,
 });
 
+sample({
+  clock: $isOpenCreateEvent,
+  filter: Boolean,
+  target: createEventForm.reset,
+});
+
 export const createEventModel = {
   createEventForm,
   $isOpenCreateEvent,
   openCreateEvent,
   createClick,
+  createEventFormGate,
 };

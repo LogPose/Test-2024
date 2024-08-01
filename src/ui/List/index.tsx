@@ -1,5 +1,4 @@
 import React from "react";
-import { EVENTS_MOCK } from "../../config";
 import { ListElement } from "../ListElement";
 import { useUnit } from "effector-react";
 import { changeEventModel, createEventModel, listModel } from "../../model";
