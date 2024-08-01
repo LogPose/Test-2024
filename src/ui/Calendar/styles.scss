@@ -1,0 +1,18 @@
+.date {
+    @apply hover:bg-stone-500;
+    @apply rounded-lg;
+}
+
+.withEvent {
+    @apply bg-red-600;
+    @apply text-yellow-50;
+    @apply hover:!bg-red-400
+}
+
+.button {
+    @apply bg-green-400;
+
+    &[data-is-create-mode="true"] {
+        @apply bg-red-400
+    }
+}

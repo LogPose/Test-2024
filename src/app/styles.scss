@@ -1,0 +1,8 @@
+.mainWrapper {
+    @apply flex;
+    @apply max-w-[720px];
+    @apply gap-2;
+    @apply py-3;
+    @apply mx-auto;
+    @apply justify-around;
+}

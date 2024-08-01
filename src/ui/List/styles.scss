@@ -1,0 +1,12 @@
+.container {
+    transition: all 0.5s ease;
+    transform: translate(0, -330px);
+
+    &[data-is-create-mode="true"] {
+        transform: translate(0, -660px);
+    }
+
+    &[data-is-change-mode="true"] {
+        transform: translate(0, 330px);
+    }
+}
