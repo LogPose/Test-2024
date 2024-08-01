@@ -21,6 +21,7 @@ export type TEvent = {
 export interface IEventTypeDropdown {
   fieldToChange: Field<EEventType>;
 }
+
 export type TPersistConfigItem = {
   $store: StoreWritable<unknown>;
   key: string;
